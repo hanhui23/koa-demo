@@ -6,8 +6,8 @@ const InitManager = require('./core/init')
 
 require('./app/models/user')
 
+app.use(exception)
 app.use(parser())
 InitManager.initCore(app)
-app.use(exception)
 
 app.listen(3000)

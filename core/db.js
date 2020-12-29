@@ -15,6 +15,12 @@ const sequelize = new Sequelize(dbName, user, password, {
   logging: true,
   define: {
     timestamps: true,
+    paranoid: true,
+    createAt: 'create_at',
+    updateAt: 'update_at',
+    deleteAt: 'delete_at',
+    underscored: true,
+    freezeTableName: true,
   },
 })
 

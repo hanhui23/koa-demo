@@ -27,6 +27,12 @@ class RegisterValidator extends LinValidator {
       new Rule('isLength', '昵称长度必须在4~32之间', { min: 4, max: 32 }),
     ]
   }
+  validatePassword(vals) {
+    const { password1, password2 } = vals.body
+    if (password1 !== password2) {
+      throw new Error('两次输入的密码不一致')
+    }
+  }
 }
 
 module.exports = {
