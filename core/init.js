@@ -5,7 +5,9 @@ class InitManager {
   static initCore(app) {
     InitManager.initLoadRouters(app)
     InitManager.loadConfig()
+    InitManager.loadHeepException()
   }
+
   static initLoadRouters(app) {
     requireDirectory(module, './../app/api', {
       visit: whenLoadModule,
@@ -21,6 +23,11 @@ class InitManager {
     const configPath = path || process.cwd() + '/config/config.js'
     const config = require(configPath)
     global.config = config
+  }
+
+  static loadHeepException() {
+    const HttpException = require('./http-exception')
+    global.errs = HttpException
   }
 }
 

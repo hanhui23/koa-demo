@@ -4,7 +4,6 @@ const catchError = async (ctx, next) => {
   try {
     await next()
   } catch (error) {
-    console.log(212234)
     const isDev = global.config.env === 'dev'
     const isHttpException = error instanceof HttpException
 
@@ -14,7 +13,7 @@ const catchError = async (ctx, next) => {
     if (isHttpException) {
       ctx.body = {
         msg: error.msg,
-        error_code: error.error_code,
+        error_code: error.errorCode,
         request: `${ctx.method} ${ctx.path}`,
       }
       ctx.status = error.code
